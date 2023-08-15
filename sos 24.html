@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="./textToSpeech.js"></script>
+    <title>Text to Speech</title>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top ">
+        <div class="container-fluid ">
+            <a class="navbar-brand" href="#">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCA8RDw8PDxEPDxAPDxEQDw8PDxEPEBAPGBQZGRgUGBgcJC4lHB4rHxgYJjgrKy8xNTU2GiU7QDszRC40NTEBDAwMEA8QGhISGDQrISQxNjQxMTE0NDQxNDQxMTQ0MTExNDQ0NDQxNDE0MTQ0NDQxNDQ0NDQ0NDQ0NDQ0NDQ0NP/AABEIAMIBAwMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAAAQIHAwQGBQj/xABHEAACAQMABQgDDQUHBQAAAAABAgADBBEFEiExQQYHE1FhcYGRIlSxFhcjMkJydJKTobPB0TRSYoKiFDNEU6Oy4SQ1Q4Pi/8QAGQEBAAMBAQAAAAAAAAAAAAAAAAEDBAIF/8QAKxEAAgEDAgQGAgMBAAAAAAAAAAECAxExElEEEyFBIjKBobHwYZFCwdFx/9oADAMBAAIRAxEAPwDi4SMJtPTJZhFCAMSQkRJCQAkpGMQRcclIiSgBHiKOCAxHCEAIQjgChHCAKGIQgCxFiOEAUjJRGCRSMZigXAxGOIwBQiMJJI8wihAHmEjCAGYZkYSCLjkhIxiASEkJERiRcgkICAji4CSkczd0Xoq5um1LalUqkHDFRhE+cx9Fd/Ew2Q2asJ3NjzY3jAGvXt6OfkIHrEDtPojPnPUXmtp/KvKp+bRRfaTONcdzh1YLuVnCWf711v63cfUpfpH711v63cfUpfpHMiRzoblXxyz/AHrrf1u4+pS/SHvXW/rdx9Sl+ka4jnQ3Kwiloe9db+t3H1KX6Q96639buPqUv0jXEc6G5V8JaHvXW/rdx9Sl+kXvXW/rdx9Sl+ka4jnQ3KwilntzXUeF3X8adM+zE1LnmufHwV2p7KlAr96sfZCqR3HOhuV1Iz39L8jtI2oLvR6WmN9S3JrADrIwGA7cY7Z4AbO0be2dJrsWJp4CIxxSbkiiMZkYuBGBgZEySR5hmRhAuSzCRhAuLMMxQEi5BISQiEkIA4xEIxAHHFNrRdg91c0bamcNXcIGxnVG0s+OxQx8JBFzouRPJF79jVrayWlNsMynD1nG9FPADie3A25IuKysqVCmtKgi0qajCoihVHb/AMxaOsqdvRp29FdSnSUIg7BxPWTvPfNuZ5S1GKc3JhCEJycBCEg7BRliABvJOBAJwmjV0nRXcxc/wgkee6YDpcfJRj3sB+s7VKb7EXR6sJ5A0x10z4Nn8plTS9I/GDL24yPukulNdhc9KEw0rim/xHVuwHaPDfM0rJCEIQAnB8s+Q1O4V7mzRadwAWakuFS44nZuV+3cePWO8hJTawdRk4u6PmhgQSCCCpKsCMEMDggjgQYp3XOloMUbhLymMU7olKgA2C4AJz/MoJ70J4zhZoTurm2MlJXQSJjiM6OhGRMkYjAIGGYzIwB5hFCLgMxiKAkAmIxIyUEEhHIiSgDna81FsH0hUqEZ6C2YjsZ3Cg+QecTLJ5nU9K/frW2XyNQ/nOZ+VldV+BloQhCZzGEIpzWlNKGqSlM4pjYWGwv/APPtllOm5uyBvXul1UlKOHbcWO1R3dfsnmO7udZ2LHt3DuHCYEElVuKdMZq1Ep/PdU9pmxU4wXQi1zOqTBd39vQZEr1qVFqgJQVHCBgCATk7Bvmv7oNHjfeWg/8Aeh9hnEcu9PW1y1BLZuk6LXL1QrKpLavorkAn4uc7t0hyLKdLU7MsdcEBlIZTtDKQVI6wRviZJT2htO3Nq4ai5C59Kk+WpP3rwPaMGWhobTVO8o9InoMpC1KZOWpv38QeB/5hM7lQccYNplwcjYRuI2ETbtdMuhAqZqJ1/LHjx8fOaTvNao87cVJWkiFTO0trhKih0IYdm8HqI4GZ5wNvfPQfXQ/OU/Fdeoj852Wjb5LimHTuZTvRuKmY6tFw6rBzKDibkIQlJwctzjWoqaKuTjbR1Kynq1WGt/SWlIT6B5VpraN0gvXZ3A/02nz5LqeDTQfhZKRMcRlheKRMcRgETFHImCRwihAEDGIhAGCCYkpASQgExHIiOQQOWbzO7r/voex5WUs3mc3X/wA6h7HnM/KV1fIyzYQmC7rrTpvUbcilj4DdKEr9EZDxeUWkMf8ATodrAGqRwU7l8ePZ3zmtIaSo2tI1q7aqg4VRteo/BVHE+zeZk6Vqjs7H0nYsxO4E/kPylTcptMtd3LVAT0SZS3XgE4t3sRnyHCejK1CCis/epdGF8npaX5Z3dclabm2pbQEpNhyP4n357sCc/wBJkljtY7Sx2sT2njNcNJpMupvJeunRGyKhhrSdnaVKrBKVN6rnaEpozsR16qgnE9duS+kVXWayuwu/PQO2B3AZE6Or7nkKZ0fI68aneUwD6NXNJxwIIyvkwH3zxTa1FbVZHVv3GRlbPcds6PkxopxVSvUVkWnkprAqzvjAwDwGc57pbBNssUWd3UqTWd5ierML1JqUTrQTd5PRelGtqwqbSjejVUbdZOsdo3jy4zSZ5r1WnTimrPBDgmrMtqnUVlDKQysAykbiDtBEyTlOQ2kekovbsctQIK540mJwPAgjuxOrnkVIOEnFnmzi4yaZ5nKL9gvfotf8Np88T6H5RfsF79Fr/htPnadU+5dQwyURjkTLC8RiMZkTBIjEYEyJkgMwihAEDJCREYkEExJSAMkDAJiGZEGOATlnczu6/wC+h7HlYZlnczm6/wC+h7HnE8FVXylnTwOVtcrQRBvqVAD8xRrH7ws9+chy0qfCW6dSu3mQPyk8NG9WP7/SM8Vdo5XT9yaVhdVFOGFFlU9TPhAf6pUZMtPlWpOjrrHBKbeAqIT90quX8X51/wA/tmhYJLMyHAJ6gTMSiZ0Bwcb8HHfM6O45Po3kjoClo+1SioHSsqtcVcDWqVcbcnqG4DgBPdYTV0deJXo0q9MgpWprUUjbsYZ/Oa3KS6r0bG7rWy69enQqNSGrr+mF36vHG/HHEq7mN3b6m3VXjON5SWhpVekX4lYk9i1PlL47/Pqnk8kNP3FbSYpUa13c2dSgTVF4Ud6TqhJcFNigsAoA2HWOzYJ3WlLIV6T0js1hlG/ccfFbz+4maKU+VLrjuaKUnRmr+pwBqyBqTBVBR2RhqsjFWU8CDgie5yMrKLwI2D0lOoi5GdoAb2KZ6U3pi5ZsejUemLlk8gvMLtPUXQ9WrcXFCiEzRaoSHbV9EMQoGw7Ts7J5JRyGZVcqmNdgjFUzu1juHjCknh/Xg5unh/Xg9LkjdmnpCiM+jV1qTeIyv9Sr5y0pS9lV1Lm2b924onw6Rcy6Jh42PiT/AB8GHil4k/weZyj/AGC9+iV/w2nzsJ9E8o/2C9+iV/w2nzqJnp9zijhjzAmRiMsNAzImGYiYAjIkxkyMAMxxQgkiDJCQkhBBMSUxiSBgXJiSzICOCCeZZ/M3uvu+h7HlXS0eZvdf99D2POJ4K6vlLOnGctdlag3A02Hkw/WdnOX5b0c0qNUfIqFD2K6/qo851wrtVXr8FFPzI5WtRWrSqUn+LURkbuZcZ++VDcW703alUGq9Nyjj+Iflx8Zb1F5zfLTQfSobuiuaiL8MoG16Y3MP4lHmO4TXxVNyWpdjXpY+a/QNtcm5uLlErigUSnRqANTLsCxZlOxtwAzs2nYdmO701yNsbqmyLRo2tfV1qde3ppTGRwdQBrL15GeoytebjTotb0U3PwN5qUnPBaut8G/dlip7Hzwl3U19Inrxw2jHb1TCUybTucjzX1rymt1Y3FJlS0qYRznCVGYl6QPyh8oY/e7RLDBmtSMzEziXVlU3qlexhp29KnrGmiIXOsxRVUs3WcbzMFxUVQWZlRRvZmCqPEzNVfA2kAdZIAnO8rjTNjUy4BDo1MhWYFwdi5AwMjI29c7pw1SS3JhG8ktznuV1a2euj0HV2ZMVShDJrA4ByN7Y2H5ohZWVW0raPuKhTUruhQqSSqtgENs2HVft4zx9H6Mr3CVnoqrCgmu+Wwcbdijidh8p0d63S6Dt6o+Nb1QuRwwzU1/3IZ6T8KjTTur6X6p2PQfhUaafTD9V0PWpnodNsNy3NHOOGdUH20z5zX0LRy2l7I8TV1BxKsXUHy1POGn6+LjRV6Pi1OjDHhqllPsd55PLCvVttI1Hou1Jq1FGLIcEqfRI86cohFzSW8feLM8U5JLu4+8X/hzVqC1xQXi1eiviXUS8JTfJS36XSNquMhanSt2BAWz5hR4y5Jzxz8UV9+9DnineSPM5R/sF79Er/htPnOfRfKP/ALfe/Ra/4bT50mWHc4o4Y8xGERMtLxRGBkTBNwMiTAyJgBCEIARiQgDIuQZAZITGDJCQDJHIAx5gEsy0eZndf/Ooex5VmZafMx8W/wDnUPY85lgrq+UtCaOl7Pp7erS2azIdQncHG1T54m9CVptNNdjKnZ3KlpsQSDsIOCDvBG8TaSpPS5YaMNGt/aUHwdY+ngbFrcfBt/fnrngJWnsxmpxUkerBqcVJHEcqtFi2rlqY1aVYM6Y2BHHxkHVgkEdh7Je2iazVLe3qP8apQpO3zmRWP3mVzpPRX9vWjbDYxuKR1s41UJ1XPgjMf5RLNt1AwqjCqAqjqUDAHlPPrQ0z6GaurOxvUhMrCY6cmzTMzIzy9KJcBS9oKBrAAYrqTrAEnCnI1W2nfsPZvnA6XvNK1talcJcamQTTW2dVyNoOVXaBv3kSyqrTWrOBTqFzq0wjlyTgBNU5PlNFKro/in8l1Opo/imcHyI0hSo16y13WnSq0CpZ2CrrK2wZOzczzy10nVShUtFcGhUq65GqMnVYEEHeAdVTPPUbvCBM9PlrU5b29sG9xWpve3sdhfsaug7aoPjW1VVJ4hQWQfcyTmNNaYrXTK9bV1kQINVdUEAk5O07STMDXtUUmoB3FJnDtT1jqFxuJHgPITDYWdS5r06FEZeo2qDjIQbyzdgG2RCmoXb3bvsmVqKje+79Lncc2Wjj/wBReMNhxQonuOXPdkIP5TLCmno2xp21Cnb0hhKShR1k7yx7SSSe+bk8mtU5k3IwVJ65Nnl8pP2C9+iV/wANp85Ez6O5SfsF79Er/htPm/MiBZRwyWYjFmIzsuGZAmMmRJgkDEYiYsyQOEUIuTcWYwZGEggnmSBmMGSBggmDHmQBjzAJZlo8yzbdILxAtm8+kH5Srcyw+Zq5C3t3SJ/vbZXA6zTfHsqTmWDip5WXHCEJUZTXvLVK1N6VQayOuCN3l1GVdp3RVWzq6rZamxPRVcbHHUeph1eMtmal9Z0q9NqVZQ6NvBG48COojrl9Cu6T/D+/suo1nTf4Kw5P1s3lsBxrIPDMsiik5vR/I17e+p11qq1vTJcBs9NrYICkAapAznORu3TsVp4lnEVIyacX2O69SMmrbEMTE7AbyB4iZLilrAdnCab0ZmRSupq6V0pTt6L1SC+CFVB6Oux3Lk+J7gZX2ltN3NzsqPq085FGn6KAjdnix78+E6jlrRP9jV+FO4Ut3FXUfeR5yv2eejwsI6dVupsoQVtXckzTEzzGzyBabbF1x1Glr8i+Tgs6PS1MG5rKOkP+WpwRSHcd54nsAlUUW+ET56f7hPoCYuOm1FRWHn0MvEyaSW44QhPMMh5HKp9XRt+x4Wdwf9Np84y/+cO5FPQ9+c4L0ehHaajBMf1GfP8AmWQNFHDHmBMjmBM7LQJiJiJiJgATFmImEEjzFCEAjCKEEEgZIGY5IGATBkszHJAyATzPX5KaY/sN/bXLEhEcpWxtzRcareWQ38s8XMeYIaufUyMGAZSCCAQQcgg7iJOVRzactVVaejb1wurhbSsxwpXhRYncRuU8d28DNrypqxklFxdmEIQkEBCEIAsSDIDMkIB5HKDRhubStboQruAUJ3B1YMueoZGPGcPQ5vbxv7yrb0R1rr1j5ej7ZZ8JdT4idNNRZZCrKKsivLjm2Gp8HdN0g/zKY1GPVsOV++chpfk5fWms1ai3Rr/5qfwlLHWSNq/zAS8oS2HG1Ivxdfb4Oo15rPU+e7QFqtJV9ItVpqoG3WZnAAHiZ9CTQpaItEqmulvQSqc5qrSQVNu/0gMzfnPEcQqzVlaxFWop2sghCc9yt5T2+jaBeoQ9ZwRb24bDVXxvP7qA4y3DtJAOYqycZzx6aXVoaPRvSLC4uAOCDIRT3nLfyDrlV5mfSF9Vua9W4rtr1azFmbcMncAOCgYAHUBNfMtSsjXBWVh5iJizEZ0dATETETFAHmLMUIA4RQgChFmGZAHHI5hmATBkszEDJAwCeY8yGY8wQSM7Hkzzh31kFpVMXluuwLWdulRepam3YOpge8TjMx5kNXIaTyXhYc6ejKgHSi5tm4ipS11z2GmW2d+J6q8vdDH/ABtEfODr7RPnqOc6UVukj6I93Gh/X7X7SHu40P6/a/aT54hGkjlLc+h/dxof1+1+0h7uND+v2v2k+eI40jlLc+hvdxof1+1+0h7uND+v2v2k+eYo0jlLc+h/dxof1+1+0h7uND+v2v2k+eIRpHKW59Cty60MP8dbnuYn2Cad1zkaHQbLhqvZSoVWz2ZIAlCwjSieUtyztN87NRlK2FuaZOzprrVZgOtUUkZ72PdK4vbytXqPWuKj1qr/ABnqNrMeodgHADYJr5hmdJJHailgeYsxZizJOiWYiYsyJMEjJiizDMAcIswzAHCLMcAUIQkEBCEIARZjhAGDHmRgDJBLMeZGOQCWYZkcx5gEsx5kcx5gDzDMWYQB5hmKEAeYswzFmAPMWYZizADMMxZigDzFmLMWZIGTFmOEgBCEIAQhCAEIQkgIQhIAQhCAEIQgBCEIACOEIARwhACOEIARwhACEIQBQhCAKKEIAQhCARMcIQAhCEAIQhACEIQAhCEA/9k=" class="food-munch-logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link active" id="navItem1" href="#wcuSection">
+                        Why Choose Us?
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    <a class="nav-link" href="#exploreMenuSection" id="navItem2">Explore TTS</a>
+                    <a class="nav-link" href="#followUsSection" id="navItem4">See related Projects</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="banner-section-bg-container d-flex justify-content-center flex-column" id="wcuSection">
+        <div class="text-center">
+            <h1 class="banner-heading mb-3">Get Text to Speech</h1>
+            <p class="banner-caption mb-4">Enjoy the Output Voice</p>
+            <p class="banner-caption1 mb-4">Speech synthesis is accessed via <span class="span-text">WEB SPEECH API</span> the SpeechSynthesis interface, a text-to-speech component that allows programs to read out their text content </p>
+        </div>
+    </div>
+    <div id="exploreMenuSection">
+        <div class="text-to-back">
+            <h1 class="text-light text-center pt-3 a">Text to Speech</h1>
+            <p class="lead text-light mt-4 b">Select Voice</p>
+            <select id="voices" class="form-select bg-success text-light"></select>
+            <div class="d-flex justify-content-center mt-4 text-light text-center">
+                <div>
+                    <p class="lead b">Volume</p>
+                    <input type="range" min="0" max="5" value="1" step="0.1" id="volume" />
+                    <span id="volume-label" class="ms-2">1</span>
+                </div>
+                <div class="mx-5">
+                    <p class="lead b">Rate</p>
+                    <input type="range" min="0.1" max="10" value="1" id="rate" step="0.1" />
+                    <span id="rate-label" class="ms-2">1</span>
+                </div>
+                <div>
+                    <p class="lead b">Pitch</p>
+                    <input type="range" min="0" max="2" value="1" step="0.1" id="pitch" />
+                    <span id="pitch-label" class="ms-2">1</span>
+                </div>
+            </div>
+            <textarea class="form-control bg-dark text-light mt-5" cols="30" rows="10" placeholder="Type here..."></textarea>
+            <div class="mb-5 text-center pb-5">
+                <button id="start" class="btn btn-success mt-5 me-3">Start</button>
+                <button id="pause" class="btn btn-warning mt-5 me-3">Pause</button>
+                <button id="resume" class="btn btn-info mt-5 me-3">Resume</button>
+                <button id="cancel" class="btn btn-danger mt-5 me-3">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="follow-us-section pt-5 pb-5" id="followUsSection">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="follow-us-section-heading">Related Text To Speech Project</h1>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <button class="btn btn-primary">
+                        click below
+                    </button>
+
+                </div>
+                <a href="https://engpres.ccbp.tech/" target="_blank" class="text-dark mt-3 text-center">CHATGPT With Voice Output as response</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-section pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgMEsGrKIQhxkRHkLndGizff991z087HiY_A&usqp=CAU" class="food-munch-logo" />
+                    <h1 class="footer-section-mail-id">tts@tts.com</h1>
+                    <p class="footer-section-address">
+                        123 Ayur Vigyan Nagar, New Delhi, India.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
